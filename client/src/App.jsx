@@ -3,6 +3,14 @@ import CardGrid from "./components/CardGrid";
 
 const App = () => {
   const [sortField, setSortField] = useState(null);
+  const [filterField, setFilterField] = useState({ min: null, max: null });
+
+  const handleInput = (e) => {
+    let value = Number(e.target.value);
+    e.target.name === "min"
+      ? setFilterField({ ...filterField, min: value })
+      : setFilterField({ ...filterField, max: value });
+  };
 
   return (
     <>
@@ -22,9 +30,26 @@ const App = () => {
         >
           Pris, Stigende
         </button>
+        <p>Størrelse:</p>
+        <input
+          type="number"
+          min="0"
+          name="min"
+          placeholder="min"
+          onChange={(e) => handleInput(e)}
+        />
+        m<span className="super">2</span>
+        <input
+          type="number"
+          min="0"
+          name="max"
+          placeholder="max"
+          onChange={(e) => handleInput(e)}
+        />
+        m<span className="super">2</span>
       </div>
       <div className="properties">
-        <CardGrid sortField={sortField} />
+        <CardGrid sortField={sortField} filterField={filterField} />
       </div>
     </>
   );
