@@ -1,11 +1,25 @@
 import React from "react";
 import numeral from "numeral";
+import data from "../../../server/data.json";
 
-const CardGrid = ({ properties }) => {
+const CardGrid = ({ sortField }) => {
+  const allProperties = data;
+  let sortedData = allProperties;
+
+  if (sortField !== null) {
+    sortField === "ascending"
+      ? (sortedData = sortedData.sort((a, b) => {
+          return b.price - a.price;
+        }))
+      : (sortedData = sortedData.sort((a, b) => {
+          return a.price - b.price;
+        }));
+  }
+
   return (
     <>
-      {properties.map((item, key) => (
-        <div className="property" key={key}>
+      {sortedData.map((item, index) => (
+        <div className="property" key={index}>
           <img className="property__image" src={item.img} alt={item.title} />
           <h2 className="property__title">{item.title}</h2>
           <span className="property__address">

@@ -1,19 +1,30 @@
 import React, { useState } from "react";
-import data from "../../server/data.json";
 import CardGrid from "./components/CardGrid";
 
 const App = () => {
-  const [dataToDisplay, setDataToDisply] = useState(data);
+  const [sortField, setSortField] = useState(null);
 
   return (
     <>
       <h1>Boliger</h1>
       <div className="filter">
-        <button>Pris, Faldende</button>
-        <button>Pris, Stigende</button>
+        <button
+          onClick={() => {
+            setSortField("ascending");
+          }}
+        >
+          Pris, Faldende
+        </button>
+        <button
+          onClick={() => {
+            setSortField("descending");
+          }}
+        >
+          Pris, Stigende
+        </button>
       </div>
       <div className="properties">
-        <CardGrid properties={dataToDisplay} />
+        <CardGrid sortField={sortField} />
       </div>
     </>
   );
