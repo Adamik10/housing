@@ -1,9 +1,19 @@
+$font-fam: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$dark: #333;
+$shadow: rgba(51, 51, 51, 0.5);
+$background: #fdf5e6;
+$background-darker: #ffebc7;
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  background: oldlace;
-  color: #333;
-  margin: 2rem;
+  font-family: $font-fam;
+  background-color: $background;
+  color: $dark;
+  padding: 2rem;
 }
 
 h1 {
@@ -12,4 +22,113 @@ h1 {
 
 .filter {
   margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  font-family: $font-fam;
+  color: $dark;
+  background-color: $background;
+  outline: none;
+  border: 1px solid $dark;
+  border-radius: 2px;
+  width: 170px;
+  height: 50px;
+  margin-right: 0.5rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background-color: $background-darker;
+    cursor: pointer;
+  }
+}
+
+.properties {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.property {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  // border: 1px solid $dark;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  background-color: $background;
+  overflow: hidden;
+  filter: drop-shadow(1px 0px 3px $shadow);
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  &__address {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 600px) {
+  .property {
+    width: 47%;
+    margin: 0 1rem 1rem 0;
+
+    &:nth-of-type(2n + 0) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  .property {
+    width: 31%;
+    margin: 0 1rem 1rem 0;
+
+    &:nth-of-type(3n + 0) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1500px) {
+  .property {
+    width: 18.5%;
+    margin: 0 1rem 1rem 0;
+
+    &:nth-of-type(5n + 0) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 1501px) {
+  .property {
+    width: 19.2%;
+    margin: 0 1rem 1rem 0;
+
+    &:nth-of-type(5n + 0) {
+      margin-right: 0;
+    }
+  }
+}
+
+.super {
+  vertical-align: super;
+  font-size: 0.6rem;
 }
