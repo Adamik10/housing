@@ -30,23 +30,25 @@ const App = () => {
         >
           Pris, Stigende
         </button>
-        <p>Størrelse:</p>
-        <input
-          type="number"
-          min="0"
-          name="min"
-          placeholder="min"
-          onChange={(e) => handleInput(e)}
-        />
-        m<span className="super">2</span>
-        <input
-          type="number"
-          min="0"
-          name="max"
-          placeholder="max"
-          onChange={(e) => handleInput(e)}
-        />
-        m<span className="super">2</span>
+        <div>
+          <p>Størrelse:</p>
+          <input
+            type="number"
+            min="0"
+            name="min"
+            placeholder="min"
+            onChange={(e) => handleInput(e)}
+          />
+          m<span className="super">2</span>
+          <input
+            type="number"
+            min="0"
+            name="max"
+            placeholder="max"
+            onChange={(e) => handleInput(e)}
+          />
+          m<span className="super">2</span>
+        </div>
       </div>
       <div className="properties">
         <CardGrid sortField={sortField} filterField={filterField} />
