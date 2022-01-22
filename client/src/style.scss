@@ -112,6 +112,11 @@ button {
   }
 }
 
+// responsive components could also be solved using
+// css variables, like explained in this post f.e.
+// https://css-tricks.com/responsive-designs-and-css-custom-properties-defining-variables-and-breakpoints/
+// However, I have never worked with it in this way, so I just used
+// the practices that I know (media queries below)
 @media only screen and (min-width: 426px) and (max-width: 600px) {
   .property {
     width: 47%;
