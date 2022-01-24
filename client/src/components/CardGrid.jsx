@@ -11,20 +11,19 @@ const CardGrid = ({ sortField, filterField }) => {
 
   // retrieves data from the API. Ideally, this would maybe be moved to its
   // own separate component, so it can be reused, but in this project I just include it here
-  const fetchData = () => {
+  async function fetchData() {
     setIsLoading(true);
-    fetch("http://localhost:3000/api/properties")
-      .then((response) => response.json())
-      .then((data) => {
-        setAllProperties(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setIsError(true);
-        console.log(error);
-      });
-  };
+    try {
+      let response = await fetch("http://localhost:3000/api/properties");
+      let data = await response.json();
+      setAllProperties(data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
+      console.log(error);
+    }
+  }
 
   // function used for filtering properties
   filterProperties = () => {
@@ -55,7 +54,9 @@ const CardGrid = ({ sortField, filterField }) => {
 
   // calling the fetch function
   useEffect(() => {
-    fetchData();
+    if (allProperties.length === 0) {
+      fetchData();
+    }
   }, []);
 
   // if the data is not loaded, we show that to the users
