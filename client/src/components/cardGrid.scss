@@ -10,6 +10,7 @@
   flex-direction: column;
   background-color: $background;
   overflow: hidden;
+  filter: drop-shadow(1px 0px 3px $shadow);
 
   &__image {
     width: 100%;
