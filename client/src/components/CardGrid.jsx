@@ -26,7 +26,7 @@ const CardGrid = ({ sortField, filterField }) => {
   }
 
   // function used for filtering properties
-  filterProperties = () => {
+  const filterProperties = () => {
     if (filterField.min !== null) {
       filteredSortedData = filteredSortedData.filter(
         (value) => value.size >= filterField.min
@@ -73,7 +73,6 @@ const CardGrid = ({ sortField, filterField }) => {
   let filteredSortedData = allProperties;
 
   filterProperties();
-
   sortProperties();
 
   return (
